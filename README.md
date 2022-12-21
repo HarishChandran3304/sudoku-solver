@@ -1,1 +1,3 @@
-# sudoku-solver
+# Sudoku Solver
+
+## Using a simple unoptimized backtracking implementation
