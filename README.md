@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-## Graphical user interface to visualize a simple unoptimized backtracking implementation to solve a given sudoku problem in real time
+### A Graphical user interface to visualize a simple unoptimized backtracking implementation to solve a given sudoku problem in real time
 
 ## To Run:
 
