@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-### A Graphical user interface to visualize a simple unoptimized backtracking implementation to solve a given sudoku problem in real time
+### A Graphical user interface to visualize a simple unoptimized backtracking implementation to solve a given sudoku problem in real time written in Python using the [Flet framework](https://flet.dev/)
 
 ## To Run:
 
