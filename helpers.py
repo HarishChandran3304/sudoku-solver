@@ -1,4 +1,6 @@
-#HELPER FUNCTIONS
+from flet import *
+from time import sleep
+
 
 def getgrid(filename: str) -> list[list[int]]:
     '''
@@ -85,6 +87,56 @@ def solve(grid: list[list[int]]) -> bool:
             grid[row][col] = n
 
             if solve(grid):
+                return True
+            
+            grid[row][col] = 0
+    
+    return False
+
+def get_sudoku_container(grid: list[list[int]]) -> Container:
+    '''
+    Draws a given grid using the Flet gui module
+    '''
+    sudoku_container = Container(
+        alignment=alignment.center
+    )
+    main_col = Column(alignment="center", controls=[])
+
+    for i in range(9):
+        if i%3 == 0:
+            main_col.controls.append(Row())
+        row = Row(alignment="center", controls=[])
+        for j in range(9):
+            if j%3 == 0:
+                row.controls.append(Column())
+            n = grid[i][j]
+            row.controls.append(FloatingActionButton(disabled=True, shape=RoundedRectangleBorder(radius=5), content=Text(n if n else ""), mini=True))
+        main_col.controls.append(row)
+    
+    sudoku_container.content = main_col
+    return sudoku_container
+
+def visualize(page: Page, sudoku_container: Container, grid: list[list[int]]) -> bool:
+    '''
+    Solves the entire sudoku grid using the backactracking algorithm recursively
+    Visually updates the UI for each attempt
+    '''
+    find = findempty(grid)
+
+    if not find:
+        return True
+    else:
+        row, col = find
+    
+    for n in range(1, 10):
+        if isvalid(grid, n, (row, col)):
+            grid[row][col] = n
+            
+            sleep(0.1)
+            sudoku_container.content = get_sudoku_container(grid)
+            page.update()
+
+            if visualize(page, sudoku_container, grid):
                 return True
             
             grid[row][col] = 0
