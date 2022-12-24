@@ -132,7 +132,7 @@ def visualize(page: Page, sudoku_container: Container, grid: list[list[int]]) ->
         if isvalid(grid, n, (row, col)):
             grid[row][col] = n
             
-            sleep(0.1)
+            # sleep(0.1)
             sudoku_container.content = get_sudoku_container(grid)
             page.update()
 

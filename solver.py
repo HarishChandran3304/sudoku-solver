@@ -1,7 +1,7 @@
 from helpers import *
 
 def main():
-    grid = getgrid("sample.txt")
+    grid = getgrid("./samples/hard.txt")
     print("Before solving: ")
     printgrid(grid)
     print()
